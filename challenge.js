@@ -54,6 +54,13 @@ const handleSubmit = e => {
   e.preventDefault()
 
   // create new comment and append to DOM
+  const commentText = form.querySelector('input').value
+  const comment = document.createElement('p')
+  comment.innerText = commentText
+  comments.append(comment)
+
+  // clear comment form
+  form.querySelector('input').value = ''
 }
 
 document.addEventListener("DOMContentLoaded", () => {
