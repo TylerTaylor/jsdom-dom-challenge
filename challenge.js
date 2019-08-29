@@ -20,7 +20,23 @@ const decrement = () => {
 }
 
 const handleLike = () => {
-  // wat do
+  const key = parseInt(counter.innerText)
+
+  // if our likes key exists, increment, else set to 1
+  likes[key] ? likes[key] += 1 : likes[key] = 1
+
+  const ul = document.querySelector('ul')
+
+  // if we have the like li, update text. else create.
+  if (document.getElementById(`like-${key}`)) {
+    document.getElementById(`like-${key}`).innerText = `${key} has ${likes[key]} likes`
+  } else {
+    const li = document.createElement('li')
+
+    li.setAttribute("id", `like-${key}`)
+    li.innerText = `${key} has ${likes[key]} likes`
+    ul.append(li)
+  }
 }
 
 const handlePause = () => {
