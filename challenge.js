@@ -27,7 +27,7 @@ const handleLike = () => {
 
   const ul = document.querySelector('ul')
 
-  // if we have the like li, update text. else create.
+  // if we have the like <li>, update the text. else create the <li>.
   if (document.getElementById(`like-${key}`)) {
     document.getElementById(`like-${key}`).innerText = `${key} has ${likes[key]} likes`
   } else {
@@ -40,14 +40,20 @@ const handleLike = () => {
 }
 
 const handlePause = () => {
-  // if paused, all buttons except pause should be disabled
+  // if paused, all buttons except pause/resume should be disabled
   // switch pause button text to "resume"
   pause.innerText = isRunning() ? "resume" : "pause"
 
-  plus.disabled = isRunning() ? false : true
-  minus.disabled = isRunning() ? false : true
-  like.disabled = isRunning() ? false : true
-  submit.disabled = isRunning() ? false : true
+  // plus.disabled = isRunning() ? false : true
+  // minus.disabled = isRunning() ? false : true
+  // like.disabled = isRunning() ? false : true
+  // submit.disabled = isRunning() ? false : true
+
+  let buttonOptions = [plus, minus, like, submit]
+
+  buttonOptions.forEach((button) => {
+    button.disabled = isRunning() ? false : true
+  })
 }
 
 const handleSubmit = e => {
